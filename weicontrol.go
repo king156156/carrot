@@ -7,6 +7,12 @@ import (
 	"github.com/king156156/carrot/weights"
 )
 
+// Weinfo weight number return value
+type Weinfo struct {
+	Number int
+	Value  string
+}
+
 // WeightsAggre  WeightsAggre
 type WeightsAggre struct {
 	randSoure *rand.Rand
@@ -22,8 +28,12 @@ func New() *WeightsAggre {
 }
 
 // GetWeights GetWeights
-func GetWeights() *weights.Weights {
-	return &weights.Weights{}
+func GetWeights(data ...Weinfo) (n *weights.Weights) {
+	n = &weights.Weights{}
+	for _, v := range data {
+		n.Add(v.Number, v.Value)
+	}
+	return
 }
 
 // Add Inject this mode weight

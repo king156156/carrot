@@ -43,12 +43,14 @@ func Test_Add(t *testing.T) {
 
 func Test_Run(t *testing.T) {
 	testA := "Probability"
-	m := GetWeights()
-	m.Add(100, "Bonus1")
-	m.Add(30, "Bonus2")
-	m.Add(2, "Bonus3")
 
-	testB := "Probability"
+	m := GetWeights([]Weinfo{
+		Weinfo{Number: 100, Value: "Bonus1"},
+		Weinfo{Number: 30, Value: "Bonus2"},
+		Weinfo{Number: 2, Value: "Bonus3"},
+	}...)
+
+	testB := "Probability1"
 	m1 := GetWeights()
 	m1.Add(1, "A")
 	m1.Add(3, "B")
